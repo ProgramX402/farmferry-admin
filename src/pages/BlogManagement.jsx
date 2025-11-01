@@ -6,7 +6,7 @@ import { useAuth } from '../AuthContext';
 import BlogForm from '../componenets/BlogForm'
 import Sidebar from '../componenets/Sidebar';
 
-const API_BASE_URL = 'https://orphanage-backend-r7i2.onrender.com/api';
+const API_BASE_URL = 'https://farmferry-backend-n04p.onrender.com/api';
 
 export default function BlogManagement() {
   const { blogs, loading, error, deleteBlog, refetch, clearError } = useBlogs();
