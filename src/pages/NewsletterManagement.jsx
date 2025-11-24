@@ -81,7 +81,7 @@ export default function NewsletterManagement() {
   if (!isAuthenticated) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gray-50">
-        <p className="text-xl text-indigo-600 font-medium">
+        <p className="text-xl text-green-600 font-medium">
           Access Denied. Redirecting to Login...
         </p>
       </div>
@@ -110,7 +110,7 @@ export default function NewsletterManagement() {
                 onChange={(e) => setTitle(e.target.value)}
                 required
                 disabled={loading}
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-green-500 focus:border-green-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
                 placeholder="Enter newsletter subject"
               />
             </div>
@@ -128,7 +128,7 @@ export default function NewsletterManagement() {
                 required
                 disabled={loading}
                 placeholder="Write the main body of your newsletter here. Basic HTML formatting is supported."
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-green-500 focus:border-green-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
               ></textarea>
             </div>
             
@@ -143,7 +143,7 @@ export default function NewsletterManagement() {
                 onChange={(e) => setFile(e.target.files[0])}
                 disabled={loading}
                 accept="image/*,video/*"
-                className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 disabled:file:bg-gray-100 disabled:file:text-gray-400"
+                className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-green-700 hover:file:bg-blue-100 disabled:file:bg-gray-100 disabled:file:text-gray-400"
               />
               {file && (
                 <div className="flex items-center text-sm text-gray-600 mt-2">
@@ -163,7 +163,7 @@ export default function NewsletterManagement() {
             <button
               type="submit"
               disabled={loading || !title || !content}
-              className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
+              className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-600 hover:bg-gree-700 disabled:bg-gray-400 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
             >
               {loading ? (
                 <div className="flex items-center">
@@ -208,13 +208,13 @@ export default function NewsletterManagement() {
           <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
             <div className="flex">
               <div className="flex-shrink-0">
-                <svg className="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
+                <svg className="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
                 </svg>
               </div>
               <div className="ml-3">
-                <h3 className="text-sm font-medium text-blue-800">Newsletter Information</h3>
-                <div className="mt-2 text-sm text-blue-700">
+                <h3 className="text-sm font-medium text-green-800">Newsletter Information</h3>
+                <div className="mt-2 text-sm text-green-700">
                   <p>This newsletter will be sent to all subscribers in your database.</p>
                   <p className="mt-1">You can include images or videos as attachments.</p>
                 </div>

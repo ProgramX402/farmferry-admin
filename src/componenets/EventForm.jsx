@@ -57,7 +57,7 @@ export default function EventForm({ onSubmit, initialData = null, onClose }) {
 
   return (
     <form onSubmit={handleSubmit} className="p-4 bg-white rounded-lg shadow-lg space-y-4">
-      <h2 className="text-2xl font-semibold text-indigo-700">
+      <h2 className="text-2xl font-semibold text-green-700">
         {initialData ? 'Edit Event' : 'Create New Event'}
       </h2>
       
@@ -70,7 +70,7 @@ export default function EventForm({ onSubmit, initialData = null, onClose }) {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
-          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500"
+          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-green-500 focus:border-green-500"
         />
       </div>
 
@@ -84,7 +84,7 @@ export default function EventForm({ onSubmit, initialData = null, onClose }) {
             value={date}
             onChange={(e) => setDate(e.target.value)}
             required
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500"
+            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-green-500 focus:border-green-500"
           />
         </div>
         <div>
@@ -95,7 +95,7 @@ export default function EventForm({ onSubmit, initialData = null, onClose }) {
             value={location}
             onChange={(e) => setLocation(e.target.value)}
             required
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500"
+            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-green-500 focus:border-green-500"
           />
         </div>
       </div>
@@ -109,7 +109,7 @@ export default function EventForm({ onSubmit, initialData = null, onClose }) {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           required
-          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500"
+          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-green-500 focus:border-green-500"
         ></textarea>
       </div>
       
@@ -125,7 +125,7 @@ export default function EventForm({ onSubmit, initialData = null, onClose }) {
           type="file"
           id="file"
           onChange={(e) => setFile(e.target.files[0])}
-          className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
+          className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-green-700 hover:file:bg-indigo-100"
         />
       </div>
 
@@ -140,7 +140,7 @@ export default function EventForm({ onSubmit, initialData = null, onClose }) {
         </button>
         <button
           type="submit"
-          className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
         >
           {initialData ? 'Save Changes' : 'Create Event'}
         </button>

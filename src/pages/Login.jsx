@@ -126,7 +126,7 @@ export default function Login() {
         <button
           type="submit"
           disabled={loading || !form.email || !form.password}
-          className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed transition-colors duration-200 flex items-center justify-center gap-2"
+          className="w-full bg-green-600 text-white p-2 rounded hover:bg-green-700 disabled:bg-green-400 disabled:cursor-not-allowed transition-colors duration-200 flex items-center justify-center gap-2"
         >
           {loading ? (
             <>

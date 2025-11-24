@@ -119,7 +119,7 @@ export default function EventManagement() {
   if (!isAuthenticated) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gray-50">
-        <p className="text-xl text-indigo-600 font-medium">
+        <p className="text-xl text-green-600 font-medium">
           Access Denied. Redirecting to Login...
         </p>
       </div>
@@ -136,7 +136,7 @@ export default function EventManagement() {
           <button
             onClick={handleCreateNew}
             disabled={uploadLoading}
-            className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 disabled:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             {uploadLoading && currentAction === 'creating' ? 'Creating...' : '+ New Event'}
           </button>
@@ -152,14 +152,14 @@ export default function EventManagement() {
         {/* Loading and Error States */}
         {loading && (
           <div className="flex items-center justify-center p-4">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600"></div>
-            <span className="ml-2 text-indigo-600">Loading events...</span>
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600"></div>
+            <span className="ml-2 text-green-600">Loading events...</span>
           </div>
         )}
         
         {uploadLoading && currentAction && (
           <div className="bg-blue-50 border border-blue-200 rounded-md p-4 mb-4">
-            <p className="text-blue-700">
+            <p className="text-green-700">
               {currentAction === 'creating' && 'Creating new event...'}
               {currentAction === 'updating' && 'Updating event...'}
               {currentAction === 'deleting' && 'Deleting event...'}
@@ -192,7 +192,7 @@ export default function EventManagement() {
                   <div className="mt-2 flex items-center space-x-4">
                     {event.mediaUrl && (
                       <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                        event.mediaType === 'video' ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800'
+                        event.mediaType === 'video' ? 'bg-green-100 text-green-800' : 'bg-green-100 text-green-800'
                       }`}>
                         {event.mediaType === 'video' ? '🎥 Video' : '🖼️ Image'}
                       </span>

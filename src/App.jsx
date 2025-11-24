@@ -35,8 +35,8 @@ export default function App() {
             {/* Staff access only */}
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/blogs" element={<BlogManagement />} />
-            <Route path="/events" element={<EventManagement />} />
-            <Route path="/projects" element={<ProjectManagement />} />
+            {/* <Route path="/events" element={<EventManagement />} />
+            <Route path="/projects" element={<ProjectManagement />} /> */}
             <Route path="/newsletter" element={<NewsletterManagement />} />
           </Route>
           

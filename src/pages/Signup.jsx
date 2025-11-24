@@ -83,7 +83,7 @@ export default function Signup() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 disabled:bg-blue-400"
+          className="w-full bg-green-600 text-white p-2 rounded hover:bg-green-700 disabled:bg-green-400"
         >
           {loading ? "Signing up..." : "Sign Up"}
         </button>

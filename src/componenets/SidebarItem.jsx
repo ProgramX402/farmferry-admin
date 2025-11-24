@@ -5,8 +5,8 @@ const SidebarItem = ({ icon: Icon, text, to }) => {
   const location = useLocation();
   const isActive = location.pathname === to;
 
-  const baseClasses = "flex items-center p-3 rounded-lg text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors duration-200 cursor-pointer";
-  const activeClasses = isActive ? "bg-indigo-100 text-indigo-700 font-semibold" : "";
+  const baseClasses = "flex items-center p-3 rounded-lg text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors duration-200 cursor-pointer";
+  const activeClasses = isActive ? "bg-green-100 text-green-700 font-semibold" : "";
 
   return (
     <Link 
