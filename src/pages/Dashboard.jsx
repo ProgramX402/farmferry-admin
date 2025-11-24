@@ -11,8 +11,6 @@ const CalendarIcon = (props) => <svg {...props} fill="none" stroke="currentColor
 const dashboardLinks = [
   { title: 'Manage Blogs', icon: BookOpenIcon, link: '/blogs' },
   { title: 'Manage Newsletter', icon: EnvelopeIcon, link: '/newsletter' },
-  { title: 'Manage Products', icon: CubeIcon, link: '/products' },
-  { title: 'Manage Events', icon: CalendarIcon, link: '/events' },
 ];
 
 export default function Dashboard() {
