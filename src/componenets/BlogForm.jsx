@@ -148,7 +148,7 @@ const BlogForm = ({ onSubmit, initialData, onClose, loading = false, action = ''
           className={`mt-1 block w-full border rounded-md shadow-sm p-3 text-sm ${
             formErrors.title 
               ? 'border-red-300 focus:border-red-500 focus:ring-red-500' 
-              : 'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500'
+              : 'border-gray-300 focus:border-green-500 focus:ring-green-500'
           } disabled:bg-gray-100 disabled:cursor-not-allowed`}
           placeholder="Enter blog title"
         />
@@ -173,7 +173,7 @@ const BlogForm = ({ onSubmit, initialData, onClose, loading = false, action = ''
           className={`mt-1 block w-full border rounded-md shadow-sm p-3 text-sm ${
             formErrors.content 
               ? 'border-red-300 focus:border-red-500 focus:ring-red-500' 
-              : 'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500'
+              : 'border-gray-300 focus:border-green-500 focus:ring-green-500'
           } disabled:bg-gray-100 disabled:cursor-not-allowed`}
           placeholder="Write your blog content here..."
         />
@@ -211,8 +211,8 @@ const BlogForm = ({ onSubmit, initialData, onClose, loading = false, action = ''
           <p className="text-sm font-medium text-gray-700 mb-2">Preview:</p>
           {previewUrl === 'video' ? (
             <div className="flex items-center space-x-2">
-              <span className="text-blue-600 text-2xl">🎥</span>
-              <span className="text-sm text-blue-600 font-medium">Video file selected</span>
+              <span className="text-green-600 text-2xl">🎥</span>
+              <span className="text-sm text-green-600 font-medium">Video file selected</span>
             </div>
           ) : previewUrl.startsWith('blob:') ? (
             // Ensure preview content is flexible
@@ -262,7 +262,7 @@ const BlogForm = ({ onSubmit, initialData, onClose, loading = false, action = ''
           type="submit"
           disabled={loading}
           // Added w-full on mobile, then reverted on sm:
-          className="w-full sm:w-auto px-6 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200"
+          className="w-full sm:w-auto px-6 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 disabled:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200"
         >
           {getButtonText()}
         </button>
