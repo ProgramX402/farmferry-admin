@@ -13,6 +13,10 @@ import ProjectManagement from "./pages/ProjectManagement";
 import NewsletterManagement from "./pages/NewsletterManagement";
 import SubscribeFrom from "./componenets/SubscribeForm";
 import ContactForm from "./componenets/ContactForm";
+import ProductPage from "./pages/Product";
+import OrdersPage from "./pages/Orders";
+
+
 
 export default function App() {
   return (
@@ -35,9 +39,11 @@ export default function App() {
             {/* Staff access only */}
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/blogs" element={<BlogManagement />} />
+            <Route path="/orders" element={<OrdersPage />} />
             {/* <Route path="/events" element={<EventManagement />} />
             <Route path="/projects" element={<ProjectManagement />} /> */}
             <Route path="/newsletter" element={<NewsletterManagement />} />
+            <Route path="/products" element={<ProductPage />} />
           </Route>
           
           {/* Catch-all for 404s */}
