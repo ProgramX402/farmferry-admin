@@ -89,7 +89,7 @@ export default function ProductPage() {
       name: product.name,
       price: product.price,
       quantity: product.stock,
-      description: product.description,
+      description: product.description || "",
       image: null,
       section: product.section || "",
       category: product.category || "",
@@ -132,7 +132,7 @@ export default function ProductPage() {
         name: formData.name,
         price: Number(formData.price),
         stock: Number(formData.quantity),
-        description: formData.description,
+        description: formData.description || "", // Ensure description is never undefined
         image: { url: imageUrl },
         section: formData.section,
         category: formData.category,
@@ -242,7 +242,7 @@ export default function ProductPage() {
                       {p.section === "farmInput" ? "Farm Input" : "Farm Produce"} • {p.category}
                     </p>
                     <p className="text-sm text-gray-600 mt-2 line-clamp-2">
-                      {p.description}
+                      {p.description || "No description available"}
                     </p>
                   </div>
 
@@ -368,15 +368,20 @@ export default function ProductPage() {
                 </div>
               )}
 
-              <textarea
-                rows={3}
-                className="input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-                placeholder="Description"
-                value={formData.description}
-                onChange={(e) =>
-                  setFormData({ ...formData, description: e.target.value })
-                }
-              />
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Description (Optional)
+                </label>
+                <textarea
+                  rows={3}
+                  className="input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                  placeholder="Add a product description..."
+                  value={formData.description}
+                  onChange={(e) =>
+                    setFormData({ ...formData, description: e.target.value })
+                  }
+                />
+              </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
