@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../componenets/Sidebar";
 import { db } from "../hooks/firebase";
-import { collection, getDocs, query, doc, updateDoc } from "firebase/firestore";
+import { collection, getDocs, query, doc, updateDoc, deleteDoc } from "firebase/firestore";
 
 export default function OrdersPage() {
   const [orders, setOrders] = useState([]);
   const [filteredOrders, setFilteredOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(null);
+  const [deleting, setDeleting] = useState(null);
   const [activeFilter, setActiveFilter] = useState("all");
 
   const fetchOrders = async () => {
@@ -106,6 +107,35 @@ export default function OrdersPage() {
       console.error("Error updating order:", err);
     } finally {
       setUpdating(null);
+    }
+  };
+
+  const deleteOrder = async (orderId, customerName) => {
+    // Confirmation dialog before deletion
+    const isConfirmed = window.confirm(
+      `Are you sure you want to delete the order from ${customerName}? This action cannot be undone.`
+    );
+    
+    if (!isConfirmed) return;
+    
+    try {
+      setDeleting(orderId);
+      const orderRef = doc(db, "orders", orderId);
+      await deleteDoc(orderRef);
+
+      // Update state to remove the deleted order
+      setOrders((prev) => {
+        const updated = prev.filter((order) => order.id !== orderId);
+        return updated;
+      });
+      
+      // Reapply filter after deletion
+      filterOrders(activeFilter);
+    } catch (err) {
+      console.error("Error deleting order:", err);
+      alert("Failed to delete order. Please try again.");
+    } finally {
+      setDeleting(null);
     }
   };
 
@@ -228,19 +258,32 @@ export default function OrdersPage() {
                     >
                       {order.status}
                     </span>
-                    {order.status.toLowerCase() !== "complete" && (
+                    <div className="flex gap-2">
+                      {order.status.toLowerCase() !== "complete" && (
+                        <button
+                          onClick={() => markComplete(order.id)}
+                          disabled={updating === order.id || deleting === order.id}
+                          className={`mt-2 px-4 py-2 rounded-lg text-sm font-medium text-white transition-all ${
+                            updating === order.id || deleting === order.id
+                              ? "bg-blue-300 cursor-not-allowed" 
+                              : "bg-blue-600 hover:bg-blue-700 active:scale-95"
+                          }`}
+                        >
+                          {updating === order.id ? "Updating..." : "Mark Complete"}
+                        </button>
+                      )}
                       <button
-                        onClick={() => markComplete(order.id)}
-                        disabled={updating === order.id}
+                        onClick={() => deleteOrder(order.id, order.customer.name)}
+                        disabled={updating === order.id || deleting === order.id}
                         className={`mt-2 px-4 py-2 rounded-lg text-sm font-medium text-white transition-all ${
-                          updating === order.id 
-                            ? "bg-blue-300 cursor-not-allowed" 
-                            : "bg-blue-600 hover:bg-blue-700 active:scale-95"
+                          deleting === order.id
+                            ? "bg-red-300 cursor-not-allowed" 
+                            : "bg-red-600 hover:bg-red-700 active:scale-95"
                         }`}
                       >
-                        {updating === order.id ? "Updating..." : "Mark Complete"}
+                        {deleting === order.id ? "Deleting..." : "Delete"}
                       </button>
-                    )}
+                    </div>
                   </div>
                 </div>
 
