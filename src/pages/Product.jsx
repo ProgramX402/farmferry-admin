@@ -40,7 +40,7 @@ export default function ProductPage() {
   const [formData, setFormData] = useState({
     name: "",
     price: "",
-    quantity: "",
+    quantity: "", // Changed from empty string to handle optional
     description: "",
     image: null,
     section: "", // "farmInput" or "farmProduce"
@@ -74,7 +74,7 @@ export default function ProductPage() {
     setFormData({
       name: "",
       price: "",
-      quantity: "",
+      quantity: "", // Keep empty for optional
       description: "",
       image: null,
       section: "",
@@ -88,7 +88,7 @@ export default function ProductPage() {
     setFormData({
       name: product.name,
       price: product.price,
-      quantity: product.stock,
+      quantity: product.stock || "", // Use empty string if stock is undefined/null
       description: product.description || "",
       image: null,
       section: product.section || "",
@@ -111,12 +111,12 @@ export default function ProductPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    setIsSubmitting(true); // Start submitting state
+    setIsSubmitting(true);
 
     // Validate section and category
     if (!formData.section || !formData.category) {
       setError("Please select both section and category");
-      setIsSubmitting(false); // Stop submitting on error
+      setIsSubmitting(false);
       return;
     }
 
@@ -131,14 +131,18 @@ export default function ProductPage() {
       const data = {
         name: formData.name,
         price: Number(formData.price),
-        stock: Number(formData.quantity),
-        description: formData.description || "", // Ensure description is never undefined
+        description: formData.description || "",
         image: { url: imageUrl },
         section: formData.section,
         category: formData.category,
         createdAt: serverTimestamp(),
         totalSold: currentProduct?.totalSold || 0,
       };
+
+      // Only include stock if quantity is provided
+      if (formData.quantity && formData.quantity.trim() !== "") {
+        data.stock = Number(formData.quantity);
+      }
 
       if (currentProduct) {
         const prodRef = doc(db, "products", currentProduct._id);
@@ -153,23 +157,23 @@ export default function ProductPage() {
       console.error(err);
       setError("Action failed");
     } finally {
-      setIsSubmitting(false); // End submitting state
+      setIsSubmitting(false);
     }
   };
 
   /* ================= DELETE ================= */
   const confirmDelete = async () => {
-    setIsDeleting(true); // Start deleting state
+    setIsDeleting(true);
     try {
       const prodRef = doc(db, "products", currentProduct._id);
-      await deleteDoc(prodRef); // Use deleteDoc for permanent deletion
+      await deleteDoc(prodRef);
       setIsDeleteOpen(false);
       fetchProducts();
     } catch (err) {
       console.error(err);
       setError("Delete failed");
     } finally {
-      setIsDeleting(false); // End deleting state
+      setIsDeleting(false);
     }
   };
 
@@ -250,7 +254,10 @@ export default function ProductPage() {
                     <span className="text-green-700 font-bold text-lg">
                       ₦{p.price}
                     </span>
-                    <span className="text-xs text-gray-500">{p.stock} units</span>
+                    {/* Only show stock if it exists */}
+                    {p.stock !== undefined && p.stock !== null && (
+                      <span className="text-xs text-gray-500">{p.stock} units</span>
+                    )}
                   </div>
                 </div>
 
@@ -314,10 +321,10 @@ export default function ProductPage() {
                   }
                 />
                 <input
-                  required
+                  // Removed required attribute
                   type="number"
                   className="input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-                  placeholder="Total units"
+                  placeholder="Total units (optional)"
                   value={formData.quantity}
                   onChange={(e) =>
                     setFormData({ ...formData, quantity: e.target.value })
