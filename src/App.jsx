@@ -28,7 +28,7 @@ export default function App() {
           {/* 🔓 PUBLIC & AUTH ROUTES (Unprotected) 🔓 */}
           {/* ======================================= */}
           <Route path="/" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          {/* <Route path="/signup" element={<Signup />} /> */}
           <Route path="/subscribe" element={<SubscribeFrom />} />
           <Route path="/contact" element={<ContactForm />} />
 
